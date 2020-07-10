@@ -22,7 +22,7 @@ selfservice:
       privileged_session_max_age: 15m
 
     recovery:
-      enabled: false # Not supported by UI service
+      enabled: true
       ui_url: http://127.0.0.1:3000/recovery
 
     verification:
