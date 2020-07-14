@@ -102,6 +102,38 @@ export PORT=4455
 npm start
 ```
 
+
+### Create Hydra client
+
+```
+docker-compose \
+  exec hydra \
+  hydra clients create \
+    --endpoint http://localhost:4445 \
+    --skip-tls-verify \
+    --id facebook-photo-backup \
+    --secret some-secret \
+    --grant-types authorization_code,refresh_token,client_credentials,implicit \
+    --response-types token,code,id_token \
+    --scope openid,offline,photos.read \
+    --callbacks http://127.0.0.1:9040/callback
+```
+
+
+### Run sample built-in into Hydra secured app
+
+```
+docker-compose \
+  exec hydra \
+  hydra token user --skip-tls-verify \
+    --port 9040 \
+    --auth-url http://localhost:4444/oauth2/auth \
+    --token-url http://localhost:4444/oauth2/token \
+    --client-id facebook-photo-backup \
+    --client-secret some-secret \
+    --scope openid,offline,photos.read
+```
+
 ### Update TypeScript SDK
 
 If you've made changes to the ORY Kratos API you may want to manually generate

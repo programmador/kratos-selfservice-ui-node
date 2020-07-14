@@ -35,6 +35,7 @@ services:
       - "4444:4444" # Public port
       - "4445:4445" # Admin port
       - "5555:5555" # Port for hydra token user
+      - "9040:9040" # Port for sample secured app
     command:
       serve all --dangerous-force-http
     restart: on-failure # TODO figure out why we need this (incorporate health check into hydra migrate command?)
