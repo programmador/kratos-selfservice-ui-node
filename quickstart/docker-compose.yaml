@@ -91,7 +91,8 @@ services:
       - intranet
   # --------------------------------------------------------------------------------------------
   login-ui:
-    image: oryd/kratos-hydra-ui-node:latest
+    build:
+      context: ..
     environment:
       - HYDRA_ADMIN_URL=http://hydra:4445
       - KRATOS_PUBLIC_URL=http://kratos:4433/
